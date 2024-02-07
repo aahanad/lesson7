@@ -1,5 +1,3 @@
-# Connecting satellites
-#Calculate the end time when next > no_of_sats and print the time you took to complete the game in the screen as a text
 import pgzrun
 import random
 from time import time
@@ -21,7 +19,7 @@ for i in range(no_of_sat):
     sattalite.y=random.randint(1,490)
     sats.append(sattalite)
 def draw():
-    global total
+    global total,end
     screen.blit("galaxy",(0,0))
     number=1
     for i in sats:
@@ -34,6 +32,10 @@ def draw():
         total=time()-start
         total=round(total,2)
         screen.draw.text(str(total),(10,10))
+    else:
+        end=total
+        screen.draw.text(str(end),(10,10))
+    
 def on_mouse_down(pos):
     global sats,lines,next
     if next<no_of_sat:
